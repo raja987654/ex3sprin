@@ -1,36 +1,31 @@
 pipeline {
     agent any
-
     tools {
         maven 'maven'
     }
-
     stages {
         stage('Clean up') {
             steps {
                 deleteDir()
             }
         }
-
         stage('Clone repo') {
             steps {
-                sh 'git clone https://github.com/raja987654/ex3sprin.git'
+                bat 'git clone https://github.com/raja987654/ex3sprin.git'
             }
         }
-
         stage('Generate Backend image') {
             steps {
-                dir('ex3sprin') { // Assurez-vous que le nom du répertoire est correct
-                    sh 'mvn clean install'
-                    sh 'docker build -t docex1-spring .'
+                dir('ex3sprin') {
+                    bat 'mvn clean install'
+                    bat 'docker build -t docex1-spring .'
                 }
             }
         }
-
         stage('Run Docker Compose') {
             steps {
-                dir('ex3sprin') { // Assurez-vous que le chemin est correct
-                    sh 'docker compose up -d'
+                dir('ex3sprin') {
+                    bat 'docker compose up -d'
                 }
             }
         }
