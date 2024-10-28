@@ -1,7 +1,11 @@
-version: '3.8'  # Assurez-vous d'ajouter une version
+version: '3.8'
 
 services:
-  spring-boot-app:
-    image: ex3sprin
+  backend:
+    image: docex1-spring
+    container_name: spring-backend
     ports:
-      - "8084:8084"
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=default
+    restart: unless-stopped
