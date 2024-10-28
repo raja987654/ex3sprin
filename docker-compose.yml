@@ -4,10 +4,6 @@ services:
   backend:
     image: docex1-spring
     container_name: spring-backend
-  ports:
-  - "8083:8080"  # Changed the host port to 8083
+    ports:
+      - "8083:8080"  # Changed the host port to 8083
 
-
-    environment:
-      - SPRING_PROFILES_ACTIVE=default
-    restart: unless-stopped
