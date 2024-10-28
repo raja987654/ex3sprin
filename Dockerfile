@@ -1,13 +1,12 @@
-FROM adoptopenjdk:17-jre-hotspot
+FROM eclipse-temurin:17-jre
 
-# Create a volume for temporary files
-VOLUME /tmp
+WORKDIR /app
 
-# Add the application JAR file
-ADD target/*.jar app.jar
+# Copy the JAR file from target directory
+COPY target/demo-0.0.1-SNAPSHOT.jar app.jar
 
-# Specify the command to run the application
-CMD ["java", "-jar", "app.jar", "--spring.profiles.active=prod"]
+# Expose the port the app runs on
+EXPOSE 8080
 
-# Expose the application port
-EXPOSE 8088
+# Command to run the application
+ENTRYPOINT ["java", "-jar", "app.jar"]
