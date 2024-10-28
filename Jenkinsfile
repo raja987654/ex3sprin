@@ -11,12 +11,12 @@ pipeline {
         }
         stage('Clone repo') {
             steps {
-                bat 'git clone https://github.com/raja987654/ex3sprin.git'
+                bat 'git clone https://github.com/raja987654/ex2spring.git'
             }
         }
         stage('Generate Backend image') {
             steps {
-                dir('ex3sprin') {
+                dir('ex2spring') { // Ensure the directory matches the cloned repo
                     bat 'mvn clean install'
                     bat 'docker build -t docex1-spring .'
                 }
@@ -24,7 +24,7 @@ pipeline {
         }
         stage('Run Docker Compose') {
             steps {
-                dir('ex3sprin') {
+                dir('ex2spring') { // Again, ensure the directory matches
                     bat 'docker compose up -d'
                 }
             }
