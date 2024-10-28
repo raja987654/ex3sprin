@@ -1,0 +1,7 @@
+version: '3.8'  # Assurez-vous d'ajouter une version
+
+services:
+  spring-boot-app:
+    image: ex3sprin
+    ports:
+      - "8084:8084"
